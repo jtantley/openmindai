@@ -1,4 +1,4 @@
-# OpenMindAI <!-- omit from toc -->
+# OpenMindAI 🧠🤖 <!-- omit from toc -->
 
 ---
 
@@ -9,9 +9,51 @@
 
 ---
 
-## 🤖🤝 Introduction
+## Contents <!-- omit from toc -->
 
-**OpenMindAI (`AXYS`)** is an advanced, teachable artificial intelligence (AI) designed to simulate intelligent and contextual conversations with users. Built upon GPT-4 architecture, it is capable of understanding natural language queries, providing coherent and contextually relevant responses, and learning from user feedback. The chatbot leverages advanced natural language processing techniques, utilizing GPT-4 based models for conversation and a Sentence Transformer model for semantic search in an SQLite database.
+- [Introduction](#introduction)
+- [💾 Dependencies](#-dependencies)
+  - [🤖🎓 AutoGen](#-autogen)
+  - [🤖💬 OpenAI](#-openai)
+  - [💾👨‍💻 SQLite](#-sqlite)
+  - [🔁💬 SentenceTransformers](#-sentencetransformers)
+- [🧩🐍 Modules](#-modules)
+  - [Root Directory](#root-directory)
+    - [🐍 `/main.py`](#-mainpy)
+  - [📁 `/agents` Subfolder](#-agents-subfolder)
+    - [🐍 `/agents/agent_manager.py`](#-agentsagent_managerpy)
+    - [🐍 `/agents/conversable_agent.py`](#-agentsconversable_agentpy)
+    - [🐍 `/agents/teachable_agent.py`](#-agentsteachable_agentpy)
+    - [🐍 `/agents/text_analyzer_agent.py`](#-agentstext_analyzer_agentpy)
+  - [📁 `/db` Subfolder](#-db-subfolder)
+    - [🐍 `/db/database.py`](#-dbdatabasepy)
+    - [`/db/app.db`](#dbappdb)
+  - [📁 `/logs` Subfolder](#-logs-subfolder)
+    - [`/logs/app.log`](#logsapplog)
+    - [📁 `/ops` Subfolder](#-ops-subfolder)
+  - [🐍 `/ops/chat_manager.py`](#-opschat_managerpy)
+  - [🐍 `/ops/config.py`](#-opsconfigpy)
+- [Structure](#structure)
+  - [📁🌳 Directory Tree Diagram](#-directory-tree-diagram)
+- [📝 Changelog](#-changelog)
+  - [10-29-2023: Updates](#10-29-2023-updates)
+  - [10-28-2023: Updates](#10-28-2023-updates)
+    - [Dev Session 5](#dev-session-5)
+    - [Dev Session 4](#dev-session-4)
+    - [Dev Session 3](#dev-session-3)
+    - [Dev Session 2](#dev-session-2)
+    - [Dev Session 1](#dev-session-1)
+  - [10-27-2023: Updates](#10-27-2023-updates)
+    - [10-27-2023: Created](#10-27-2023-created)
+    - [10-27-2023: Added](#10-27-2023-added)
+    - [10-27-2023: Modified](#10-27-2023-modified)
+    - [10-27-2023: Fixed](#10-27-2023-fixed)
+
+---
+
+## Introduction
+
+**OpenMindAI 🧠🤖 (`AXYS`)** is an advanced, teachable artificial intelligence (AI) designed to simulate intelligent and contextual conversations with users. Built upon GPT-4 architecture, it is capable of understanding natural language queries, providing coherent and contextually relevant responses, and learning from user feedback. The chatbot leverages advanced natural language processing techniques, utilizing GPT-4 based models for conversation and a Sentence Transformer model for semantic search in an SQLite database.
 
 The project is modular, consisting of separate components for database operations, logging, configuration, and chat management. This modular approach makes the codebase scalable, maintainable, and easy to understand.
 
@@ -56,41 +98,41 @@ AXYS uses the **`SentenceTransformers` tool** for database embeddings.
 
 ### Root Directory
 
-#### `/main.py`
+#### 🐍 `/main.py`
 
 The main application file that initializes and runs the chatbot.
 
 ---
 
-### `/agent` Subfolder
+### 📁 `/agents` Subfolder
 
-#### `/agent/agent.py`
+#### 🐍 `/agents/agent_manager.py`
 
 Centralized file that manages the `ConversableAgent`, `TeachableAgent`, and `TextAnalyzerAgent` classes which handle chat functionalities and learning capabilities. These classes are now organized into separate modules under the `/agents` subfolder for better modularity and ease of maintenance.
 
 ---
 
-#### `/agent/conversable_agent.py`
+#### 🐍 `/agents/conversable_agent.py`
 
 Contains the AutoGen `ConversableAgent` class which handles basic chat functionalities.
 
 ---
 
-#### `/agent/teachable_agent.py`
+#### 🐍 `/agents/teachable_agent.py`
 
 Contains the AutoGen `TeachableAgent` class which extends the functionalities of `ConversableAgent` with learning capabilities.
 
 ---
 
-#### `/agent/text_analyzer_agent.py`
+#### 🐍 `/agents/text_analyzer_agent.py`
 
 Contains the AutoGen `TextAnalyzerAgent` class which provides text analysis functionalities.
 
 ---
 
-### `/db` Subfolder
+### 📁 `/db` Subfolder
 
-#### `/db/database.py`
+#### 🐍 `/db/database.py`
 
 Handles database operations, including memo storage and retrieval.
 
@@ -102,7 +144,7 @@ The SQLite database file where memos are stored.
 
 ---
 
-### `/logs` Subfolder
+### 📁 `/logs` Subfolder
 
 #### `/logs/app.log`
 
@@ -110,7 +152,7 @@ The log file where debug and info statements are saved.
 
 ---
 
-#### `/ops` Subfolder
+#### 📁 `/ops` Subfolder
 
 The `/ops` directory contains these core files:
 
@@ -121,13 +163,13 @@ It only contains configuration files with private API keys, including an `.env` 
 
 ---
 
-### `/ops/chat_manager.py`
+### 🐍 `/ops/chat_manager.py`
 
 Manages the chat functionalities specifically for a `TeachableAgent`.
 
 ---
 
-### `/ops/config.py`
+### 🐍 `/ops/config.py`
 
 Handles configuration and logging settings. Pulls API keys and LLM config settings from `/ops/OAI_CONFIG_LIST.json`. As a backup, it can pull API keys using environment variables using an `.env` file in the same folder.
 
@@ -143,8 +185,8 @@ The following diagram represents the current project directory structure.
 Root
 ├── main.py
 ├── README.md
-├── agent
-│   ├── agent.py
+├── agents
+│   ├── agent_manager.py
 │   ├── conversable_agent.py
 │   ├── teachable_agent.py
 │   └── text_analyzer_agent.py
@@ -169,11 +211,16 @@ Root
 
 ---
 
-## 📝⌛ Changelog
+## 📝 Changelog
 
 _The following is a record of changes, updates improvements, bug fixes, etc._
 
 ---
+
+### 10-29-2023: Updates
+
+- Renamed `/agent` subfolder to **`/agents`**
+- Renamed `agent.py` to **`agent_manager.py`**
 
 ### 10-28-2023: Updates
 
