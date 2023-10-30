@@ -1,4 +1,4 @@
-# Teachable AI
+# OpenMindAI
 # Version: AXYS
 # Module: Database Operations
 # Filepath: `/db/database.py`
@@ -86,7 +86,7 @@ class MemoStore:
             logger.error(f"Failed to close database connection: {e}")
             raise
 
-    # add_input_output_pair method
+    # Corrected the indentation for add_input_output_pair method
     def add_input_output_pair(self, input_text, output_text):
         """
         Adds an input-output pair to the vector database.
@@ -102,7 +102,6 @@ class MemoStore:
             output_embedding = self.model.encode(
                 output_text, convert_to_tensor=True)
         except Exception as e:
-            # Corrected error message
             logger.error(f"Failed to generate embeddings: {e}")
             raise
 
