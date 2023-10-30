@@ -7,7 +7,6 @@
 import os
 import json
 import logging
-from typing import List, Dict
 
 # Initialize logging
 script_dir = os.path.dirname(__file__)
@@ -17,7 +16,7 @@ logs_dir = os.path.join(script_dir, '..', 'logs')
 if not os.path.exists(logs_dir):
     os.makedirs(logs_dir)
 
-log_file_path = os.path.join(logs_dir, 'axys.log')
+log_file_path = os.path.join(logs_dir, 'app.log')
 
 logging.basicConfig(
     filename=log_file_path,
