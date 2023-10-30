@@ -33,7 +33,7 @@
     - [📁 `/ops` Subfolder](#-ops-subfolder)
   - [🐍 `/ops/chat_manager.py`](#-opschat_managerpy)
   - [🐍 `/ops/config.py`](#-opsconfigpy)
-- [Structure](#structure)
+- [🧩 Structure](#-structure)
   - [📁🌳 Directory Tree Diagram](#-directory-tree-diagram)
 - [📝 Changelog](#-changelog)
   - [10-29-2023: Updates](#10-29-2023-updates)
@@ -175,7 +175,7 @@ Handles configuration and logging settings. Pulls API keys and LLM config settin
 
 ---
 
-## Structure
+## 🧩 Structure
 
 ### 📁🌳 Directory Tree Diagram
 
