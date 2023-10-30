@@ -1,110 +1,123 @@
 # OpenMindAI <!-- omit from toc -->
 
+---
+
+**PROJECT:** **OpenMindAI**  
 **VERSION:** _**`AXYS`**_  
 **DESCRIPTION:** Automated Teachable Chatbot AI for Intelligent Conversation  
 **UPDATED:** 10-28-2023
 
 ---
 
-## Table of Contents <!-- omit from toc -->
+## 🤖🤝 Introduction
 
-- [Introduction](#introduction)
-- [Dependencies](#dependencies)
-  - [AutoGen](#autogen)
-  - [OpenAI](#openai)
-  - [SQLite](#sqlite)
-  - [SentenceTransformers](#sentencetransformers)
-- [Modules](#modules)
-  - [`/main.py`](#mainpy)
-  - [`/agent/agent.py`](#agentagentpy)
-  - [`/db/database.py`](#dbdatabasepy)
-  - [`/db/app.db`](#dbappdb)
-  - [`/logs/app.log`](#logsapplog)
-  - [`/ops/chat_manager.py`](#opschat_managerpy)
-  - [`/ops/config.py`](#opsconfigpy)
-- [Structure](#structure)
-  - [Directory Structure](#directory-structure)
-- [Changelog](#changelog)
-  - [10-28-2023](#10-28-2023)
-    - [Updated](#updated)
-  - [10-27-2023](#10-27-2023)
-    - [Created](#created)
-    - [Added](#added)
-    - [Modified](#modified)
-    - [Fixed](#fixed)
-
----
-
-## Introduction
-
-AgentChat AXYS is an advanced, teachable artificial intelligence (AI) designed to simulate intelligent and contextual conversations with users. Built upon GPT-4 architecture, it is capable of understanding natural language queries, providing coherent and contextually relevant responses, and learning from user feedback. The chatbot leverages advanced natural language processing techniques, utilizing GPT-4 based models for conversation and a Sentence Transformer model for semantic search in an SQLite database.
+**OpenMindAI (`AXYS`)** is an advanced, teachable artificial intelligence (AI) designed to simulate intelligent and contextual conversations with users. Built upon GPT-4 architecture, it is capable of understanding natural language queries, providing coherent and contextually relevant responses, and learning from user feedback. The chatbot leverages advanced natural language processing techniques, utilizing GPT-4 based models for conversation and a Sentence Transformer model for semantic search in an SQLite database.
 
 The project is modular, consisting of separate components for database operations, logging, configuration, and chat management. This modular approach makes the codebase scalable, maintainable, and easy to understand.
 
 ---
 
-## Dependencies
+## 💾 Dependencies
 
-- AutoGen SDK
-- OpenAI API
-- SQLite database
-- SentenceTransformers
+- 🤖🎓 AutoGen SDK
+- 🤖💬 OpenAI API
+- 💾👨‍💻 SQLite database
+- 🔁💬 SentenceTransformers
 
 ---
 
-### AutoGen
+### 🤖🎓 AutoGen
 
 AXYS leverages the **AutoGen SDK** for agent abilities, classes, utilities, etc.
 
 ---
 
-### OpenAI
+### 🤖💬 OpenAI
 
 AXYS relies on the **OpenAI API**, especially to utilize the `gpt-3.5-turbo`, `gpt-3.5-turbo-16k`, and `gpt-4` language model (LLMs).
 
 ---
 
-### SQLite
+### 💾👨‍💻 SQLite
 
 AXYS uses a **SQLite database**. The database is located at `/db/axys.db` and database operations are managed by the `db/database.py` file.
 
 ---
 
-### SentenceTransformers
+### 🔁💬 SentenceTransformers
 
 AXYS uses the **`SentenceTransformers` tool** for database embeddings.
 
 ---
 
-## Modules
+## 🧩🐍 Modules
 
-### `/main.py`
+**OpenMindAI (`AXYS`)** is initiated by the `main.py` file in the root directory, but the project's code is split into several Python modules. A brief description of each module is provided below.
+
+### Root Directory
+
+#### `/main.py`
 
 The main application file that initializes and runs the chatbot.
 
 ---
 
-### `/agent/agent.py`
+### `/agent` Subfolder
 
-Contains the `ConversableAgent` and `TeachableAgent` classes, which handle the chat functionalities and learning capabilities.
+#### `/agent/agent.py`
+
+Centralized file that manages the `ConversableAgent`, `TeachableAgent`, and `TextAnalyzerAgent` classes which handle chat functionalities and learning capabilities. These classes are now organized into separate modules under the `/agents` subfolder for better modularity and ease of maintenance.
 
 ---
 
-### `/db/database.py`
+#### `/agent/conversable_agent.py`
+
+Contains the AutoGen `ConversableAgent` class which handles basic chat functionalities.
+
+---
+
+#### `/agent/teachable_agent.py`
+
+Contains the AutoGen `TeachableAgent` class which extends the functionalities of `ConversableAgent` with learning capabilities.
+
+---
+
+#### `/agent/text_analyzer_agent.py`
+
+Contains the AutoGen `TextAnalyzerAgent` class which provides text analysis functionalities.
+
+---
+
+### `/db` Subfolder
+
+#### `/db/database.py`
 
 Handles database operations, including memo storage and retrieval.
 
 ---
 
-### `/db/app.db`
+#### `/db/app.db`
 
 The SQLite database file where memos are stored.
 
 ---
 
-### `/logs/app.log`
+### `/logs` Subfolder
+
+#### `/logs/app.log`
 
 The log file where debug and info statements are saved.
+
+---
+
+#### `/ops` Subfolder
+
+The `/ops` directory contains these core files:
+
+- `chat_manager.py`
+- `config.py`
+
+It only contains configuration files with private API keys, including an `.env` file and a specific `OAI_CONFIG_LIST.json` file.
 
 ---
 
@@ -116,20 +129,25 @@ Manages the chat functionalities specifically for a `TeachableAgent`.
 
 ### `/ops/config.py`
 
-Handles configuration and logging settings. Pulls API keys and LLM config settings from `/ops/OAI_CONFIG_LIST.json`.
+Handles configuration and logging settings. Pulls API keys and LLM config settings from `/ops/OAI_CONFIG_LIST.json`. As a backup, it can pull API keys using environment variables using an `.env` file in the same folder.
 
 ---
 
 ## Structure
 
-### Directory Structure
+### 📁🌳 Directory Tree Diagram
+
+The following diagram represents the current project directory structure.
 
 ```txt
 Root
 ├── main.py
 ├── README.md
 ├── agent
-│   └── agent.py
+│   ├── agent.py
+│   ├── conversable_agent.py
+│   ├── teachable_agent.py
+│   └── text_analyzer_agent.py
 ├── db
 │   ├── database.py
 │   └── app.db
@@ -138,7 +156,8 @@ Root
 |   │   └── {old project files}
 │   ├── autogen
 |   │   └── {AutoGen documentation files}
-│   └── chatgpt_custom_instructions.yml
+│   ├── chatgpt_custom_instructions.yml
+│   └── prompts.md
 ├── logs
 │   └── app.log
 └── ops
@@ -150,15 +169,70 @@ Root
 
 ---
 
-## Changelog
+## 📝⌛ Changelog
 
 _The following is a record of changes, updates improvements, bug fixes, etc._
 
 ---
 
-### 10-28-2023
+### 10-28-2023: Updates
 
-#### Updated
+#### Dev Session 5
+
+**ChatGPT-4:** "These updates integrate the various agent modules into a single, unified AI personality and streamline the user interaction process through the `ChatManager`."
+
+**`main.py` Updates:**
+
+- Replaced individual agent initializations with `AgentManager` class.
+- Used `AgentManager` for initializing `ChatManager`.
+
+**`agent/agent.py` Updates:**
+
+- Added `AgentManager` class to manage `ConversableAgent`, `TeachableAgent`, and `TextAnalyzerAgent`.
+
+**`ops/chat_manager.py` Updates:**
+
+- Updated constructor to take an `AgentManager` object instead of a `TeachableAgent`.
+- Added `handle_user_input()` method to process user input through all three agent modules.
+
+#### Dev Session 4
+
+- Modified `teachable_agent.py` to correct indentation and import the logger and config settings appropriately.
+- Updated `conversable_agent.py` to correct the import statement and added logger and config imports.
+- Added logger and config imports to `text_analyzer_agent.py`.
+- Verified that `agent.py` is correctly managing all agent classes.
+- Updated the `ChatManager` class in `/ops/chat_manager.py` to include methods for managing the interaction between the `ConversableAgent`, `TeachableAgent`, and `TextAnalyzerAgent`.
+- Added a `handle_user_input` method to the `ChatManager` class to centralize processing of user input through the different agents.
+- Modified the `ChatManager` constructor to accept an `AgentManager` instance instead of just a `TeachableAgent`.
+- Updated the `start_chat` method in `ChatManager` to initiate a terminal-based chat loop.
+
+#### Dev Session 3
+
+**Files Updated:**
+
+- `/agent/teachable_agent.py`
+- `/ops/config.py`
+
+**Updates to `teachable_agent.py`:**
+
+- Added `start_chat` method: Introduced a method to integrate the `TeachableAgent` with the `ChatManager` for initiating a chat session.
+
+**Updates to `chat_manager.py`:**
+
+- `start_chat` method: Modified to initialize and update the `chat_history` of the `TeachableAgent` during the chat session.
+
+**Update summary:**
+
+- The updates primarily focus on ensuring seamless integration between the `TeachableAgent` and the `ChatManager`. Specifically, a new method `start_chat` was added to the `TeachableAgent` class to initiate a chat session via the `ChatManager`. Additionally, the `ChatManager`'s `start_chat` method was updated to manage the chat history of the `TeachableAgent`.
+
+#### Dev Session 2
+
+- Aligned `ConversableAgent`, `TeachableAgent`, and `TextAnalyzerAgent` classes with AutoGen documentation for better compliance and leveraging SDK functionalities.
+- Moved `ConversableAgent`, `TeachableAgent`, and `TextAnalyzerAgent` classes to separate modules under the `/agent` subfolder for better modularity and ease of maintenance.
+- Created a centralized `/agent/agent.py` file to manage the three agent class modules.
+- Various bug fixes and optimizations.
+
+#### Dev Session 1
 
 - Moved `ConversableAgent` and `TeachableAgent` classes from `/axys.py` to new `/agent.py` module.
 - Introduced `/chat_manager.py` to manage chat functionalities for `TeachableAgent`.
@@ -174,28 +248,32 @@ _The following is a record of changes, updates improvements, bug fixes, etc._
 
 ---
 
-### 10-27-2023
+### 10-27-2023: Updates
 
-#### Created
+#### 10-27-2023: Created
 
-- Created first version of TeachableAI (AXYS) code.
+- Created first version of OpenMindAI code (**_v.`AXYS`_**).
 - Created `axys.py` file as the main entry point for the application.
 - Introduced `ConversableAgent` and `TeachableAgent` classes to `axys.py`.
 
-#### Added
+#### 10-27-2023: Added
 
 - Added `database.py` for SQLite database operations, including a `MemoStore` class for memory storage and retrieval.
 - Created `config.py` for configuration and logging setup.
 - Implemented a chat manager module (`chat_manager.py`) to handle chat functionalities.
 
-#### Modified
+#### 10-27-2023: Modified
 
 - Enhanced error handling across modules.
 - Improved logging by adopting the DEBUG level and adding timestamps.
 
-#### Fixed
+#### 10-27-2023: Fixed
 
 - Resolved path issues for the SQLite database in `database.py`.
 - Corrected error messages for better debugging.
+
+---
+
+> ⚠️ **END OF README FILE.** ⚠️
 
 ---

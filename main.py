@@ -4,21 +4,20 @@
 # Filepath: `/main.py`
 # Updated: 10-28-2023
 
-from agent import ConversableAgent, TeachableAgent
+from agent.agent import AgentManager
 from ops.chat_manager import ChatManager
-from db.database import MemoStore
-from ops.config import logger, get_api_key_for_model, get_misc_api_key
+from ops.config import logger
 
-# Now you can use logger and get_api_key_for_model in main.py
-logger.debug("This is a debug message from main.py")
+# Now you can use logger in main.py
+logger.debug("MAIN FILE: This is a debug message from main.py.")
 
 
 def main():
-    # Initialize a TeachableAgent named "Axys"
-    axys_agent = TeachableAgent(name="Axys")
+    # Initialize an AgentManager
+    axys_agent_manager = AgentManager()
 
-    # Initialize a ChatManager for the TeachableAgent
-    axys_chat_manager = ChatManager(teachable_agent=axys_agent)
+    # Initialize a ChatManager for the AgentManager
+    axys_chat_manager = ChatManager(agent_manager=axys_agent_manager)
 
     # Start the terminal-based chat
     axys_chat_manager.start_chat()
